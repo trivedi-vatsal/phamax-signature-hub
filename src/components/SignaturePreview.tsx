@@ -26,15 +26,18 @@ export const SignaturePreview: React.FC<SignaturePreviewProps> = ({
   // Compute the absolute base URL for images
   const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL}`;
 
-  const isComplete = data.fullName.trim() !== '' && 
-                     data.designation.trim() !== '' && 
-                     data.email.trim() !== '' && 
-                     data.mobile.trim() !== '' && 
-                     data.teams.trim() !== '';
+  const isComplete =
+    data.fullName.trim() !== "" &&
+    data.designation.trim() !== "" &&
+    data.email.trim() !== "" &&
+    data.mobile.trim() !== "" &&
+    data.teams.trim() !== "";
 
   const handleCopy = async () => {
     if (!isComplete) {
-      alert("Please fill out all mandatory fields (marked with *) before copying.");
+      alert(
+        "Please fill out all mandatory fields (marked with *) before copying.",
+      );
       return;
     }
     if (!previewRef.current) return;
@@ -78,7 +81,9 @@ export const SignaturePreview: React.FC<SignaturePreviewProps> = ({
 
   const handleExportHTML = () => {
     if (!isComplete) {
-      alert("Please fill out all mandatory fields (marked with *) before exporting HTML.");
+      alert(
+        "Please fill out all mandatory fields (marked with *) before exporting HTML.",
+      );
       return;
     }
     if (!previewRef.current) return;
@@ -109,9 +114,25 @@ ${previewRef.current.innerHTML}
     <div className="flex flex-col bg-white p-5 rounded-xl shadow-sm border border-gray-100 w-full">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-medium flex items-center text-gray-800">
-          <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          <svg
+            className="w-5 h-5 mr-2 text-blue-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+            />
           </svg>
           Live Preview
         </h2>
@@ -119,8 +140,10 @@ ${previewRef.current.innerHTML}
           <button
             onClick={handleCopy}
             disabled={!isComplete}
-            className={`flex items-center justify-center p-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${isComplete ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`}
-            title={isComplete ? "Copy Signature" : "Fill all mandatory fields first"}
+            className={`flex items-center justify-center p-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${isComplete ? "bg-blue-600 hover:bg-blue-700 text-white" : "bg-gray-300 text-gray-500 cursor-not-allowed"}`}
+            title={
+              isComplete ? "Copy Signature" : "Fill all mandatory fields first"
+            }
           >
             <Copy size={16} className="mr-1.5" />
             Copy
@@ -128,8 +151,10 @@ ${previewRef.current.innerHTML}
           <button
             onClick={handleExportHTML}
             disabled={!isComplete}
-            className={`flex items-center justify-center p-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-1 ${isComplete ? 'bg-white border border-gray-300 hover:bg-gray-50 text-gray-700' : 'bg-gray-100 border border-gray-200 text-gray-400 cursor-not-allowed'}`}
-            title={isComplete ? "Export HTML" : "Fill all mandatory fields first"}
+            className={`flex items-center justify-center p-2 text-sm font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-1 ${isComplete ? "bg-white border border-gray-300 hover:bg-gray-50 text-gray-700" : "bg-gray-100 border border-gray-200 text-gray-400 cursor-not-allowed"}`}
+            title={
+              isComplete ? "Export HTML" : "Fill all mandatory fields first"
+            }
           >
             <Download size={16} className="mr-1.5" />
             Export
@@ -147,7 +172,10 @@ ${previewRef.current.innerHTML}
       {showToast && (
         <div className="fixed bottom-4 right-4 bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-lg shadow-xl flex items-center space-x-3 transition-opacity duration-300 z-50 animate-fade-in-up">
           <CheckCircle2 className="text-green-400 w-5 h-5 flex-shrink-0" />
-          <p className="font-medium text-sm">Signature copied to clipboard! You can now paste it into Outlook or Gmail.</p>
+          <p className="font-medium text-sm">
+            Signature copied to clipboard! You can now paste it into Outlook or
+            Gmail.
+          </p>
         </div>
       )}
 
@@ -216,7 +244,12 @@ ${previewRef.current.innerHTML}
                               {data.fullName || "\u00A0"}
                             </div>
                           </td>
-                          <td style={{ width: "20px" }}></td>
+                          <td
+                            style={{
+                              width: "20px",
+                              borderLeft: "2.5px solid #e02b27",
+                            }}
+                          ></td>
                           <td
                             style={{
                               padding: "0",
@@ -250,7 +283,9 @@ ${previewRef.current.innerHTML}
                                 href={`mailto:${data.email}`}
                                 style={{
                                   color: "#0563C1",
-                                  textDecoration: data.email ? "underline" : "none",
+                                  textDecoration: data.email
+                                    ? "underline"
+                                    : "none",
                                 }}
                               >
                                 {data.email || "\u00A0"}
@@ -353,7 +388,12 @@ ${previewRef.current.innerHTML}
                               </tbody>
                             </table>
                           </td>
-                          <td style={{ width: "20px" }}></td>
+                          <td
+                            style={{
+                              width: "20px",
+                              borderLeft: "2.5px solid #e02b27",
+                            }}
+                          ></td>
                           <td style={{ padding: "0", verticalAlign: "top" }}>
                             <div
                               style={{
@@ -372,7 +412,9 @@ ${previewRef.current.innerHTML}
                                 href={`mailto:${data.teams}`}
                                 style={{
                                   color: isDarkMode ? "#e5e7eb" : "#000000",
-                                  textDecoration: data.teams ? "underline" : "none",
+                                  textDecoration: data.teams
+                                    ? "underline"
+                                    : "none",
                                   wordBreak: "break-all",
                                 }}
                               >
