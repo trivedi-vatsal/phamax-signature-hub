@@ -35,7 +35,7 @@ function App() {
     <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center">
-          <img src="/favicon.png" alt="Phamax Logo" className="h-6 w-auto mr-3" />
+          <img src={`${import.meta.env.BASE_URL}favicon.png`} alt="Phamax Logo" className="h-6 w-auto mr-3" />
           <h1 className="text-xl font-bold text-gray-900 tracking-tight">Phamax Signature Studio</h1>
         </div>
       </header>
