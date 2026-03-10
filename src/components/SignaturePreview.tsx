@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import type { SignatureData } from "../types";
-import { Copy, Download, Moon, Sun } from "lucide-react";
+import { Copy, Download, Moon, Sun, CheckCircle2 } from "lucide-react";
 
 interface SignaturePreviewProps {
   data: SignatureData;
@@ -14,6 +14,14 @@ export const SignaturePreview: React.FC<SignaturePreviewProps> = ({
   onToggleTheme,
 }) => {
   const previewRef = useRef<HTMLDivElement>(null);
+  const [showToast, setShowToast] = useState(false);
+
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => setShowToast(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
 
   // Compute the absolute base URL for images
   const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL}`;
@@ -45,9 +53,7 @@ export const SignaturePreview: React.FC<SignaturePreviewProps> = ({
       });
 
       await navigator.clipboard.write([clipboardItem]);
-      alert(
-        "Signature copied to clipboard! You can now paste it into Outlook or Gmail.",
-      );
+      setShowToast(true);
     } catch (err) {
       console.error(
         "Failed to copy via Clipboard API, falling back to execCommand",
@@ -62,7 +68,7 @@ export const SignaturePreview: React.FC<SignaturePreviewProps> = ({
       try {
         document.execCommand("copy");
         selection?.removeAllRanges();
-        alert("Signature copied to clipboard!");
+        setShowToast(true);
       } catch (fallbackErr) {
         console.error("Fallback copy failed", fallbackErr);
         alert("Failed to copy. Please select the text and copy manually.");
@@ -137,6 +143,13 @@ ${previewRef.current.innerHTML}
           </button>
         </div>
       </div>
+
+      {showToast && (
+        <div className="fixed bottom-4 right-4 bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-lg shadow-xl flex items-center space-x-3 transition-opacity duration-300 z-50 animate-fade-in-up">
+          <CheckCircle2 className="text-green-400 w-5 h-5 flex-shrink-0" />
+          <p className="font-medium text-sm">Signature copied to clipboard! You can now paste it into Outlook or Gmail.</p>
+        </div>
+      )}
 
       <div
         className={`flex-grow border rounded-lg p-4 overflow-x-auto transition-colors duration-200 ${isDarkMode ? "bg-gray-900 border-gray-700 text-gray-100" : "bg-white border-gray-200 text-gray-900"}`}
