@@ -15,6 +15,9 @@ export const SignaturePreview: React.FC<SignaturePreviewProps> = ({
 }) => {
   const previewRef = useRef<HTMLDivElement>(null);
 
+  // Compute the absolute base URL for images
+  const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL}`;
+
   const isComplete = data.fullName.trim() !== '' && 
                      data.designation.trim() !== '' && 
                      data.email.trim() !== '' && 
@@ -280,7 +283,7 @@ ${previewRef.current.innerHTML}
                                   <td style={{ paddingRight: "8px" }}>
                                     <a href="https://www.linkedin.com/company/phamax">
                                       <img
-                                        src="http://localhost:5175/image001.png"
+                                        src={`${baseUrl}image001.png`}
                                         alt="LinkedIn"
                                         width="30"
                                         height="29"
@@ -294,7 +297,7 @@ ${previewRef.current.innerHTML}
                                   <td style={{ paddingRight: "8px" }}>
                                     <a href="https://www.youtube.com/channel/UCWS5PQ-pU4nQVQw4B6LgSnw">
                                       <img
-                                        src="http://localhost:5175/image002.png"
+                                        src={`${baseUrl}image002.png`}
                                         alt="YouTube"
                                         width="30"
                                         height="29"
@@ -308,7 +311,7 @@ ${previewRef.current.innerHTML}
                                   <td style={{ paddingRight: "8px" }}>
                                     <a href="https://www.facebook.com/phamaxAG/">
                                       <img
-                                        src="http://localhost:5175/image003.png"
+                                        src={`${baseUrl}image003.png`}
                                         alt="Facebook"
                                         width="30"
                                         height="29"
@@ -322,7 +325,7 @@ ${previewRef.current.innerHTML}
                                   <td>
                                     <a href="https://ariya.ai/">
                                       <img
-                                        src="http://localhost:5175/image004.png"
+                                        src={`${baseUrl}image004.png`}
                                         alt="Ariya"
                                         width="30"
                                         height="29"
@@ -394,7 +397,7 @@ ${previewRef.current.innerHTML}
                   <td style={{ paddingTop: "20px" }}>
                     <a href="https://phamax.ch/">
                       <img
-                        src="http://localhost:5175/image005.png"
+                        src={`${baseUrl}image005.png`}
                         alt="Phamax Banner"
                         width="694"
                         style={{
