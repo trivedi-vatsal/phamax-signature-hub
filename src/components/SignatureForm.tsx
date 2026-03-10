@@ -45,6 +45,34 @@ export const SignatureForm: React.FC<SignatureFormProps> = ({ data, onChange, on
         </div>
       </div>
       
+      <div className="mb-6">
+        <label className="block text-sm font-medium text-gray-700 mb-2">Signature Template Region</label>
+        <div className="flex space-x-4">
+          <label className="flex items-center space-x-2 cursor-pointer">
+            <input 
+              type="radio" 
+              name="templateType" 
+              value="India" 
+              checked={data.templateType === "India"} 
+              onChange={handleChange} 
+              className="text-blue-600 focus:ring-blue-500 h-4 w-4"
+            />
+            <span className="text-sm text-gray-700">India (Bengaluru)</span>
+          </label>
+          <label className="flex items-center space-x-2 cursor-pointer">
+            <input 
+              type="radio" 
+              name="templateType" 
+              value="International" 
+              checked={data.templateType === "International"} 
+              onChange={handleChange} 
+              className="text-blue-600 focus:ring-blue-500 h-4 w-4"
+            />
+            <span className="text-sm text-gray-700">International (Swiss)</span>
+          </label>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label className={labelClasses}>Full Name <span className="text-red-500 ml-0.5">*</span></label>
@@ -58,6 +86,12 @@ export const SignatureForm: React.FC<SignatureFormProps> = ({ data, onChange, on
           <label className={labelClasses}>Email <span className="text-red-500 ml-0.5">*</span></label>
           <input type="email" name="email" value={data.email} onChange={handleChange} className={inputClasses} placeholder="john@example.com" required />
         </div>
+        {data.templateType === "International" && (
+          <div>
+            <label className={labelClasses}>Phone <span className="text-red-500 ml-0.5">*</span></label>
+            <input type="text" name="phone" value={data.phone} onChange={handleChange} className={inputClasses} placeholder="+41 - (0) 41 710 2092" required />
+          </div>
+        )}
         <div>
           <label className={labelClasses}>Mobile <span className="text-red-500 ml-0.5">*</span></label>
           <input type="text" name="mobile" value={data.mobile} onChange={handleChange} className={inputClasses} placeholder="+1 234 567 890" required />

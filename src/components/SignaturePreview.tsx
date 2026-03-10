@@ -31,7 +31,8 @@ export const SignaturePreview: React.FC<SignaturePreviewProps> = ({
     data.designation.trim() !== "" &&
     data.email.trim() !== "" &&
     data.mobile.trim() !== "" &&
-    data.teams.trim() !== "";
+    data.teams.trim() !== "" &&
+    (data.templateType === "International" ? data.phone.trim() !== "" : true);
 
   const handleCopy = async () => {
     if (!isComplete) {
@@ -402,6 +403,15 @@ ${previewRef.current.innerHTML}
                                 marginBottom: "15px",
                               }}
                             >
+                              {data.templateType === "International" && (
+                                <>
+                                  <span style={{ color: "#666666" }}>Phone: </span>
+                                  <span style={{ color: "#7F7F7F" }}>
+                                    {data.phone || "\u00A0"}
+                                  </span>
+                                  <br />
+                                </>
+                              )}
                               <span style={{ color: "#666666" }}>Mobile: </span>
                               <span style={{ color: "#7F7F7F" }}>
                                 {data.mobile || "\u00A0"}
@@ -429,18 +439,29 @@ ${previewRef.current.innerHTML}
                                 color: "#7F7F7F",
                               }}
                             >
-                              PURVA PREMIERE{" "}
-                              <span style={{ color: "#666666" }}>|</span> COWRKS{" "}
-                              <span style={{ color: "#666666" }}>|</span> 135/1{" "}
-                              <span style={{ color: "#666666" }}>|</span>{" "}
-                              Residency Rd{" "}
-                              <span style={{ color: "#666666" }}>|</span> Ward
-                              No.76 <span style={{ color: "#666666" }}>|</span>
-                              Ashok Nagar{" "}
-                              <span style={{ color: "#666666" }}>|</span>{" "}
-                              Bengaluru{" "}
-                              <span style={{ color: "#666666" }}>|</span>{" "}
-                              Karnataka 560025
+                              {data.templateType === "International" ? (
+                                <>
+                                  phamax AG <span style={{ color: "#666666" }}>|</span>{" "}
+                                  Bahnhofstrasse 29 <span style={{ color: "#666666" }}>|</span>{" "}
+                                  6300 Zug <span style={{ color: "#666666" }}>|</span>{" "}
+                                  Switzerland
+                                </>
+                              ) : (
+                                <>
+                                  PURVA PREMIERE{" "}
+                                  <span style={{ color: "#666666" }}>|</span> COWRKS{" "}
+                                  <span style={{ color: "#666666" }}>|</span> 135/1{" "}
+                                  <span style={{ color: "#666666" }}>|</span>{" "}
+                                  Residency Rd{" "}
+                                  <span style={{ color: "#666666" }}>|</span> Ward
+                                  No.76 <span style={{ color: "#666666" }}>|</span>
+                                  Ashok Nagar{" "}
+                                  <span style={{ color: "#666666" }}>|</span>{" "}
+                                  Bengaluru{" "}
+                                  <span style={{ color: "#666666" }}>|</span>{" "}
+                                  Karnataka 560025
+                                </>
+                              )}
                             </div>
                           </td>
                         </tr>

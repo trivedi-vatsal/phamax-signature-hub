@@ -11,6 +11,7 @@ function App() {
     fullName: '',
     designation: '',
     email: '',
+    phone: '',
     mobile: '',
     teams: '',
   });
@@ -22,8 +23,10 @@ function App() {
       fullName: '',
       designation: '',
       email: '',
+      phone: '',
       mobile: '',
       teams: '',
+      templateType: signatureData.templateType, // preserve the selected template
     });
   };
 
