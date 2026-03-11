@@ -233,7 +233,7 @@ ${previewRef.current.innerHTML}
                             style={{
                               padding: "0",
                               verticalAlign: "top",
-                              width: "300px",
+                              width: "325px",
                             }}
                           >
                             <div
@@ -304,7 +304,6 @@ ${previewRef.current.innerHTML}
                               style={{
                                 fontFamily: FONT_FAMILY,
                                 fontSize: "8pt",
-                                fontWeight: "bold",
                                 marginBottom: "15px",
                                 minHeight: "18px",
                               }}
@@ -327,7 +326,6 @@ ${previewRef.current.innerHTML}
                               style={{
                                 fontFamily: FONT_FAMILY,
                                 fontSize: "8pt",
-                                fontWeight: "bold",
                                 lineHeight: "1.5",
                               }}
                             >
@@ -536,7 +534,7 @@ ${previewRef.current.innerHTML}
                     <div
                       style={{
                         fontFamily: FONT_FAMILY,
-                        fontSize: "8pt",
+                        fontSize: "6pt",
                         color: "#999999",
                         lineHeight: "1.5",
                       }}
