@@ -26,6 +26,9 @@ export const SignaturePreview: React.FC<SignaturePreviewProps> = ({
   // Compute the absolute base URL for images
   const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL}`;
 
+  const FONT_FAMILY =
+    '"Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif';
+
   const isComplete =
     data.fullName.trim() !== "" &&
     data.designation.trim() !== "" &&
@@ -188,9 +191,8 @@ ${previewRef.current.innerHTML}
           <div
             ref={previewRef}
             style={{
-              fontFamily:
-                '"Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif',
-              fontSize: "14px",
+              fontFamily: FONT_FAMILY,
+              fontSize: "8pt",
               lineHeight: "1.4",
               color: isDarkMode ? "#e5e7eb" : "#333333",
             }}
@@ -231,15 +233,15 @@ ${previewRef.current.innerHTML}
                             style={{
                               padding: "0",
                               verticalAlign: "top",
-                              width: "337px",
+                              width: "300px",
                             }}
                           >
                             <div
                               style={{
-                                fontSize: "15.3px",
+                                fontFamily: FONT_FAMILY,
+                                fontSize: "12pt",
                                 fontWeight: "bold",
                                 color: isDarkMode ? "#e5e7eb" : "#000000",
-                                marginBottom: "20px",
                               }}
                             >
                               {data.fullName || "\u00A0"}
@@ -260,10 +262,10 @@ ${previewRef.current.innerHTML}
                           >
                             <div
                               style={{
-                                fontSize: "15.3px",
+                                fontFamily: FONT_FAMILY,
+                                fontSize: "12pt",
                                 fontWeight: "bold",
                                 color: "#7f7f7f",
-                                marginBottom: "20px",
                               }}
                             >
                               {data.designation || "\u00A0"}
@@ -271,10 +273,37 @@ ${previewRef.current.innerHTML}
                           </td>
                         </tr>
                         <tr>
+                          <td
+                            style={{
+                              height: "20px",
+                              lineHeight: 0,
+                              fontSize: 0,
+                            }}
+                          >
+                            &nbsp;
+                          </td>
+                          <td
+                            style={{
+                              width: "20px",
+                              borderLeft: "2.5px solid #e02b27",
+                            }}
+                          ></td>
+                          <td
+                            style={{
+                              height: "20px",
+                              lineHeight: 0,
+                              fontSize: 0,
+                            }}
+                          >
+                            &nbsp;
+                          </td>
+                        </tr>
+                        <tr>
                           <td style={{ padding: "0", verticalAlign: "top" }}>
                             <div
                               style={{
-                                fontSize: "12px",
+                                fontFamily: FONT_FAMILY,
+                                fontSize: "8pt",
                                 fontWeight: "bold",
                                 marginBottom: "15px",
                                 minHeight: "18px",
@@ -283,6 +312,7 @@ ${previewRef.current.innerHTML}
                               <a
                                 href={`mailto:${data.email}`}
                                 style={{
+                                  fontFamily: FONT_FAMILY,
                                   color: "#0563C1",
                                   textDecoration: data.email
                                     ? "underline"
@@ -295,7 +325,8 @@ ${previewRef.current.innerHTML}
 
                             <div
                               style={{
-                                fontSize: "12px",
+                                fontFamily: FONT_FAMILY,
+                                fontSize: "8pt",
                                 fontWeight: "bold",
                                 lineHeight: "1.5",
                               }}
@@ -303,6 +334,7 @@ ${previewRef.current.innerHTML}
                               <a
                                 href={`https://${data.website1.replace(/^https?:\/\//, "")}`}
                                 style={{
+                                  fontFamily: FONT_FAMILY,
                                   color: "#666666",
                                   textDecoration: "none",
                                 }}
@@ -313,6 +345,7 @@ ${previewRef.current.innerHTML}
                               <a
                                 href={`https://${data.website2.replace(/^https?:\/\//, "")}`}
                                 style={{
+                                  fontFamily: FONT_FAMILY,
                                   color: "#666666",
                                   textDecoration: "none",
                                 }}
@@ -398,14 +431,17 @@ ${previewRef.current.innerHTML}
                           <td style={{ padding: "0", verticalAlign: "top" }}>
                             <div
                               style={{
-                                fontSize: "12px",
+                                fontFamily: FONT_FAMILY,
+                                fontSize: "8pt",
                                 lineHeight: "1.5",
                                 marginBottom: "15px",
                               }}
                             >
                               {data.templateType === "International" && (
                                 <>
-                                  <span style={{ color: "#666666" }}>Phone: </span>
+                                  <span style={{ color: "#666666" }}>
+                                    Phone:{" "}
+                                  </span>
                                   <span style={{ color: "#7F7F7F" }}>
                                     {data.phone || "\u00A0"}
                                   </span>
@@ -421,6 +457,7 @@ ${previewRef.current.innerHTML}
                               <a
                                 href={`mailto:${data.teams}`}
                                 style={{
+                                  fontFamily: FONT_FAMILY,
                                   color: isDarkMode ? "#e5e7eb" : "#000000",
                                   textDecoration: data.teams
                                     ? "underline"
@@ -434,27 +471,34 @@ ${previewRef.current.innerHTML}
 
                             <div
                               style={{
-                                fontSize: "12px",
+                                fontFamily: FONT_FAMILY,
+                                fontSize: "8pt",
                                 lineHeight: "1.5",
                                 color: "#7F7F7F",
                               }}
                             >
                               {data.templateType === "International" ? (
                                 <>
-                                  phamax AG <span style={{ color: "#666666" }}>|</span>{" "}
-                                  Bahnhofstrasse 29 <span style={{ color: "#666666" }}>|</span>{" "}
-                                  6300 Zug <span style={{ color: "#666666" }}>|</span>{" "}
+                                  phamax AG{" "}
+                                  <span style={{ color: "#666666" }}>|</span>{" "}
+                                  Bahnhofstrasse 29{" "}
+                                  <span style={{ color: "#666666" }}>|</span>{" "}
+                                  6300 Zug{" "}
+                                  <span style={{ color: "#666666" }}>|</span>{" "}
                                   Switzerland
                                 </>
                               ) : (
                                 <>
                                   PURVA PREMIERE{" "}
-                                  <span style={{ color: "#666666" }}>|</span> COWRKS{" "}
-                                  <span style={{ color: "#666666" }}>|</span> 135/1{" "}
+                                  <span style={{ color: "#666666" }}>|</span>{" "}
+                                  COWRKS{" "}
+                                  <span style={{ color: "#666666" }}>|</span>{" "}
+                                  135/1{" "}
                                   <span style={{ color: "#666666" }}>|</span>{" "}
                                   Residency Rd{" "}
-                                  <span style={{ color: "#666666" }}>|</span> Ward
-                                  No.76 <span style={{ color: "#666666" }}>|</span>
+                                  <span style={{ color: "#666666" }}>|</span>{" "}
+                                  Ward No.76{" "}
+                                  <span style={{ color: "#666666" }}>|</span>{" "}
                                   Ashok Nagar{" "}
                                   <span style={{ color: "#666666" }}>|</span>{" "}
                                   Bengaluru{" "}
@@ -470,7 +514,7 @@ ${previewRef.current.innerHTML}
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ paddingTop: "20px" }}>
+                  <td style={{ paddingTop: "10px" }}>
                     <a href="https://phamax.ch/">
                       <img
                         src={`${baseUrl}image005.png`}
@@ -488,14 +532,13 @@ ${previewRef.current.innerHTML}
                   </td>
                 </tr>
                 <tr>
-                  <td style={{ paddingTop: "15px" }}>
+                  <td style={{ paddingTop: "10px" }}>
                     <div
                       style={{
-                        fontSize: "10px",
+                        fontFamily: FONT_FAMILY,
+                        fontSize: "8pt",
                         color: "#999999",
                         lineHeight: "1.5",
-                        fontFamily:
-                          '"Gotham", "Helvetica Neue", Helvetica, Arial, sans-serif',
                       }}
                     >
                       CONFIDENTIALITY NOTICE:
@@ -517,7 +560,11 @@ ${previewRef.current.innerHTML}
                       manage client relationships.{" "}
                       <a
                         href="https://phamax.ch/privacy-policy/"
-                        style={{ color: "#0563C1", textDecoration: "none" }}
+                        style={{
+                          fontFamily: FONT_FAMILY,
+                          color: "#0563C1",
+                          textDecoration: "none",
+                        }}
                       >
                         VISIT OUR POLICY PAGE
                       </a>{" "}

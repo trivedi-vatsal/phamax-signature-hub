@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Gotham';
+  src: url('./assets/gothambook-webfont.woff2') format('woff2'),
+       url('./assets/gothambook-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer base {
   body {
     @apply bg-gray-50 text-gray-900;
