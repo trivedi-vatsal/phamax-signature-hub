@@ -1,4 +1,4 @@
-# Phamax Signature Studio
+# phamax Signature Hub
 
 A React-based web application to generate and copy standard email signatures for Phamax employees.
 
